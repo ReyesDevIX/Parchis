@@ -1,0 +1,36 @@
+class Sala{
+    constructor (codigo,nombreSala,maxJugadores,anfitrion,anfitrionId){
+        this.codigo = codigo;
+        this.nombreSala = nombreSala;
+        this.maxJugadores = maxJugadores;
+        this.jugadores = [anfitrion];
+        this.anfitrionId = anfitrionId;
+        this.estado = "esperando";
+    }
+
+    //Funciones
+    agregarJugador(jugador){
+        //Añadimos el jugador a la lista de la sala
+        this.jugadores.push(jugador);
+
+    }
+   quitarJugador(id) {
+
+        //Eliminamos al jugador de la sala
+        this.jugadores = this.jugadores.filter(j => j.id !== id);
+    }
+    estaLlena(){
+
+        //Para saber si la sala esta llena o no averiguamos la longitud de la lista  y comparamos con el maximo de jugadore
+        return this.jugadores.length >= this.maxJugadores;
+    }
+
+    
+    estaVacia(){
+        //Para saber si la sala esta vacia o no averiguamos la longitud de la lista 
+        
+         return this.jugadores.length < 1;
+
+
+    }
+}
