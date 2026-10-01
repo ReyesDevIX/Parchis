@@ -1,0 +1,26 @@
+{
+  "name": "parchis-online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "test": "vitest",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:cliente": "npm run dev --workspace=cliente",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "eslint-plugin-vue": "^10.11.1",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.9",
+    "vitest": "^5.0.3"
+  }
+}
