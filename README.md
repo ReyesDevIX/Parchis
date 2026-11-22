@@ -1,4 +1,4 @@
-# 🎲 Parchís Online Multijugador
+# Parchís Online Multijugador
 
 Juego de Parchís clásico multijugador en tiempo real para jugar con amigos desde el navegador, sin necesidad de registro. Desarrollado como proyecto colaborativo de **Desarrollo de Aplicaciones Web (DAW)** con arquitectura cliente-servidor autoritativa.
 
@@ -10,7 +10,7 @@ Juego de Parchís clásico multijugador en tiempo real para jugar con amigos des
 
 ---
 
-## ✨ Características (MVP)
+## Características (MVP)
 
 - **Salas privadas al instante:** Crea una partida eligiendo entre 2 y 8 jugadores y comparte el código de invitación.
 - **Acceso sin registro:** Únete a cualquier sala únicamente eligiendo tu nombre.
@@ -20,7 +20,7 @@ Juego de Parchís clásico multijugador en tiempo real para jugar con amigos des
 
 ---
 
-## 🏗️ Arquitectura y Stack Tecnológico
+## Arquitectura y Stack Tecnológico
 
 El proyecto está organizado como un **monorepo con NPM Workspaces**, separando la lógica pura del juego de la interfaz y la red:
 
@@ -40,7 +40,7 @@ El cliente nunca decide si una jugada es válida. Cuando un jugador hace clic en
 
 ---
 
-## 📜 Reglas implementadas
+## Reglas implementadas
 
 1. Cada jugador comienza con **4 fichas** en su casa.
 2. **Salida:** Hace falta sacar un **5** para sacar ficha (obligatorio si quedan fichas en casa y la casilla de salida está libre).
@@ -55,7 +55,7 @@ El cliente nunca decide si una jugada es válida. Cuando un jugador hace clic en
 
 ---
 
-## 🚀 Instalación y ejecución en local
+## Instalación y ejecución en local
 
 ### Requisitos previos
 - [Node.js](https://nodejs.org/) (v18 o superior)
@@ -86,7 +86,7 @@ El cliente nunca decide si una jugada es válida. Cuando un jugador hace clic en
 
 ---
 
-## 🗺️ Hoja de ruta
+## Hoja de ruta
 
 - [x] **Fase 0:** Configuración del monorepo, ESLint, Prettier, Vitest y flujo de GitHub.
 - [ ] **Fase 1:** Servidor Express + Socket.IO, salas de espera, pantalla de inicio y chat en vivo.
@@ -98,7 +98,7 @@ El cliente nunca decide si una jugada es válida. Cuando un jugador hace clic en
 
 ---
 
-## 🤝 Flujo de trabajo y contribución
+## Flujo de trabajo y contribución
 
 - La rama `main` está protegida: todos los cambios entran mediante **Pull Request** con revisión del compañero.
 - Seguimos el estándar [Conventional Commits](https://www.conventionalcommits.org/es/) (`feat:`, `fix:`, `test:`, `chore:`, `docs:`).
@@ -106,7 +106,7 @@ El cliente nunca decide si una jugada es válida. Cuando un jugador hace clic en
 
 ---
 
-## 👥 Autores
+## Autores
 
-- **Persona A (Backend y Motor de Reglas):** [@UsuarioA](https://github.com/ReyesDevIX)
-- **Persona B (Frontend, UI y Chat):** [@UsuarioB](https://github.com/)
+- **Persona A (Backend y Motor de Reglas):** [@ReyesDevIX](https://github.com/ReyesDevIX)
+- **Persona B (Frontend, UI y Chat):** [@Oscar2006iba]([https://github.com/](https://github.com/Oscar2006iba))
