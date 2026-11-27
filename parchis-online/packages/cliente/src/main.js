@@ -246,3 +246,29 @@ cover.addEventListener('mousemove', (event) => {
 });
 cover.addEventListener('mouseleave', resetTilt);
 reducedMotion.addEventListener('change', resetTilt);
+
+
+const splash = document.querySelector('.splash');
+if (reducedMotion.matches) {
+  splash.remove();
+} else {
+  const introEvents = new AbortController();
+  const options = { signal: introEvents.signal };
+
+  function dismissIntro() {
+    introEvents.abort();
+    splash.remove();
+  }
+
+  splash.addEventListener('click', dismissIntro, options);
+  document.addEventListener('keydown', (event) => {
+    event.preventDefault();
+    dismissIntro();
+  }, { ...options, capture: true });
+  splash.addEventListener('animationend', (event) => {
+    if (event.animationName === 'splash-exit') dismissIntro();
+  }, options);
+  reducedMotion.addEventListener('change', dismissIntro, options);
+  // El CSS puede haber terminado antes de que se cargue el módulo.
+  if (getComputedStyle(splash).visibility === 'hidden') dismissIntro();
+}
