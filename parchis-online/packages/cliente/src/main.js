@@ -151,10 +151,10 @@ function sendChatMessage(e) {
         <div class="flex items-center gap-1.5 text-[11px]">
             <span class="w-2 h-2 rounded-full bg-rose-500 shadow-sm"></span>
             <span class="font-extrabold text-white/90">Tú</span>
-            <span class="text-white/50 text-[10px]">${timeStr}</span>
         </div>
         <div class="glass-btn p-3 rounded-2xl rounded-tl-sm text-white self-start max-w-[88%] font-semibold border border-white/20">
             ${escapeHtml(text)}
+            <time datetime="${timeStr}">${timeStr}</time>
         </div>
     `;
 
