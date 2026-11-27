@@ -199,3 +199,50 @@ Object.assign(window, {
   changeTheme,
   sendChatMessage,
 });
+
+const modeToggle = document.querySelector('.mode-toggle');
+const themeKey = 'parchis-color-mode';
+
+function applyMode(dark) {
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  modeToggle.setAttribute('aria-pressed', String(dark));
+  modeToggle.title = dark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
+}
+
+let darkMode = false;
+try {
+  darkMode = localStorage.getItem(themeKey) === 'dark';
+} catch {
+  // El navegador puede bloquear el almacenamiento local.
+}
+applyMode(darkMode);
+modeToggle.addEventListener('click', () => {
+  const dark = document.documentElement.dataset.theme !== 'dark';
+  applyMode(dark);
+  try {
+    localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+  } catch {
+    // La elección sigue activa durante esta sesión.
+  }
+});
+
+const board = document.querySelector('.board');
+const cover = board.closest('.cover');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function resetTilt() {
+  board.style.removeProperty('--tilt-x');
+  board.style.removeProperty('--tilt-y');
+}
+
+cover.addEventListener('mousemove', (event) => {
+  if (reducedMotion.matches) return;
+  const bounds = cover.getBoundingClientRect();
+  const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+  const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+  board.classList.add('is-interactive');
+  board.style.setProperty('--tilt-x', -y * 14 + 'deg');
+  board.style.setProperty('--tilt-y', x * 18 + 'deg');
+});
+cover.addEventListener('mouseleave', resetTilt);
+reducedMotion.addEventListener('change', resetTilt);

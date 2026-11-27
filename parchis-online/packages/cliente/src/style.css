@@ -1,24 +1,43 @@
 :root {
+  --ink: #202c49;
+  --ground: #fff2d6;
+  --line: #263a5933;
+  --sunlight: #fff1bd;
+  --sky-start: #ffd8c4;
+  --sky-end: #ccedff;
+  --panel: #ffffffb8;
+  --cover-end: #fffae7ad;
+  --label: #374560;
+  --field: #ffffffc9;
+  --placeholder: #59667a;
+  --button: #dfe6f2;
+  --focus: #2447aa;
+  --muted: #495875;
+  --badge: #744909;
+  --time: #48536a;
+  --error: #a62736;
+  --cover-mix: white;
+  --cover-accent: 56%;
+  --bubble-mix: white;
   color-scheme: light;
   font:
     16px/1.5 system-ui,
     sans-serif;
-  color: #202c49;
-  background: #fff2d6;
+  color: var(--ink);
+  background: var(--ground);
 }
 * {
   box-sizing: border-box;
 }
 body {
   --accent: #ff8472;
-  --line: #263a5933;
   margin: 0;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   background:
-    radial-gradient(ellipse at top left, #fff1bd, transparent 56%),
-    linear-gradient(125deg, #ffd8c4, #ccedff);
+    radial-gradient(ellipse at top left, var(--sunlight), transparent 56%),
+    linear-gradient(125deg, var(--sky-start), var(--sky-end));
 }
 .theme-red {
   --accent: #f36673;
@@ -85,7 +104,7 @@ main {
 .panel {
   border: 1px solid var(--line);
   border-radius: 1.6rem;
-  background: #ffffffb8;
+  background: var(--panel);
   backdrop-filter: blur(20px);
   box-shadow:
     inset 0 4px var(--accent),
@@ -109,8 +128,8 @@ main {
 .cover {
   background: linear-gradient(
     145deg,
-    color-mix(in srgb, var(--accent) 56%, white),
-    #fffae7ad
+    color-mix(in srgb, var(--accent) var(--cover-accent), var(--cover-mix)),
+    var(--cover-end)
   );
   display: grid;
   align-content: center;
@@ -121,7 +140,7 @@ legend,
 label {
   font-size: 0.82rem;
   font-weight: 650;
-  color: #374560;
+  color: var(--label);
 }
 .eyebrow {
   text-transform: uppercase;
@@ -232,14 +251,14 @@ button {
 input {
   width: 100%;
   min-width: 0;
-  background: #ffffffc9;
+  background: var(--field);
   padding: 0.7rem 0.85rem;
 }
 input::placeholder {
-  color: #59667a;
+  color: var(--placeholder);
 }
 button {
-  background: #dfe6f2;
+  background: var(--button);
   padding: 0.55rem 1rem;
   font-weight: 650;
   cursor: pointer;
@@ -255,7 +274,7 @@ button:active:enabled {
   transform: translateY(1px);
 }
 :focus-visible {
-  outline: 3px solid #2447aa;
+  outline: 3px solid var(--focus);
   outline-offset: 3px;
 }
 button:disabled {
@@ -344,7 +363,7 @@ legend {
 }
 small {
   font: 600 0.85rem system-ui;
-  color: #495875;
+  color: var(--muted);
 }
 ul {
   margin: 0.5rem 0;
@@ -366,15 +385,16 @@ li .relative .glass-panel {
   width: 42px;
   height: 42px;
   background: color-mix(in srgb, var(--accent) 65%, white);
+  color: #182238;
   border-radius: 50%;
 }
 li [class*='rounded-full']:not(:empty) {
   font-size: 0.72rem;
-  color: #744909;
+  color: var(--badge);
 }
 li [class*='text-[11px]'] {
   font-size: 0.8rem;
-  color: #495875;
+  color: var(--muted);
 }
 .chat {
   display: flex;
@@ -390,7 +410,7 @@ li [class*='text-[11px]'] {
 #chat-messages p,
 footer,
 .back {
-  color: #495875;
+  color: var(--muted);
   font-size: 0.86rem;
 }
 #chat-messages > div {
@@ -398,7 +418,7 @@ footer,
   margin-bottom: 0.7rem;
 }
 #chat-messages .glass-btn {
-  background: color-mix(in srgb, var(--accent) 25%, white);
+  background: color-mix(in srgb, var(--accent) 25%, var(--bubble-mix));
   border-radius: 0.2rem 0.8rem 0.8rem;
   padding: 0.5rem 0.85rem;
   width: fit-content;
@@ -408,7 +428,7 @@ footer,
   display: block;
   text-align: right;
   font-size: 0.68rem;
-  color: #48536a;
+  color: var(--time);
   margin-top: 0.12rem;
   font-variant-numeric: tabular-nums;
 }
@@ -417,7 +437,7 @@ footer,
   margin-right: 0.4rem;
 }
 .error {
-  color: #a62736;
+  color: var(--error);
 }
 .hidden {
   display: none;
@@ -467,7 +487,68 @@ footer {
     border-top: 1px solid var(--line);
   }
 }
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --ink: #f1f4ff;
+  --ground: #19233a;
+  --line: #cad8ff44;
+  --sunlight: #383557;
+  --sky-start: #29253c;
+  --sky-end: #172f44;
+  --panel: #19243cd9;
+  --cover-end: #202d48bd;
+  --label: #e2e8fc;
+  --field: #111b30d9;
+  --placeholder: #afbdd6;
+  --button: #354460;
+  --focus: #acceff;
+  --muted: #c7d2e7;
+  --badge: #ffd386;
+  --time: #c7d2e7;
+  --error: #ffa5b4;
+  --cover-mix: #17243a;
+  --cover-accent: 24%;
+  --bubble-mix: #182332;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mode-toggle {
+  width: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+}
+.sun,
+[data-theme='dark'] .moon {
+  display: none;
+}
+[data-theme='dark'] .sun {
+  display: inline;
+}
+.panel,
+input,
+.mode-toggle {
+  transition:
+    background-color 0.24s,
+    border-color 0.24s,
+    color 0.24s;
+}
+.board {
+  transform: perspective(760px) rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transition: transform 0.28s ease-out;
+}
+.board.is-interactive {
+  animation: none;
+}
 @media (prefers-reduced-motion: reduce) {
+  .board {
+    transform: none;
+  }
   *,
   *::before,
   *::after {

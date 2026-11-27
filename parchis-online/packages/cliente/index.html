@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-type="software">
+<html lang="es" data-type="software" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,6 +12,36 @@
     <header>
       <button class="brand" onclick="showScreen('screen-home')">
         <span class="mark" aria-hidden="true"></span>Parchís Online
+      </button>
+      <button
+        class="mode-toggle"
+        type="button"
+        aria-label="Modo oscuro"
+        title="Modo oscuro"
+        aria-pressed="false"
+      >
+        <svg
+          aria-hidden="true"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            class="moon"
+            d="M20.5 14A8.8 8.8 0 0 1 10 3.5 8.8 8.8 0 1 0 20.5 14Z"
+          />
+          <g class="sun">
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
+            />
+          </g>
+        </svg>
       </button>
     </header>
     <main>
