@@ -188,3 +188,14 @@ function changeTheme(color) {
     
     body.classList.add(`theme-${color}`);
 }
+
+// Los atributos de evento del HTML acceden a estas funciones desde window.
+Object.assign(window, {
+  showScreen,
+  createNewRoom,
+  joinRoomWithCode,
+  copyRoomCode,
+  simulateJoinPlayer,
+  changeTheme,
+  sendChatMessage,
+});
