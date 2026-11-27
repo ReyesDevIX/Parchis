@@ -1,249 +1,120 @@
-<!DOCTYPE html>
-<html class="h-full" lang="es">
-<head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Parchís Online - Glassmorphism</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-  
-  <!-- Iconos -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-  
-  <!-- Hoja de Estilos -->
-  <link rel="stylesheet" href="src/style.css">
-</head>
-<body class="theme-default min-h-full flex flex-col justify-between selection:bg-white/30 overflow-x-hidden relative transition-colors duration-500">
-
-  <!-- Header Superior Glassmorphism -->
-  <header class="relative z-10 w-full px-6 py-4 glass-panel border-x-0 border-t-0">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-      
-      <!-- Logo Parchís -->
-      <div class="flex items-center gap-3.5 cursor-pointer group" onclick="showScreen('screen-home')">
-        <div class="w-12 h-12 rounded-2xl glass-panel flex items-center justify-center transition-transform group-hover:scale-105 duration-200 overflow-hidden p-1">
-          <img src="src/assets/logo-blanco.jpg" alt="Logo Parchís" class="w-full h-full object-cover rounded-xl" />
-        </div>
-        <div>
-          <h1 class="text-2xl font-black font-game tracking-wider text-white drop-shadow-md flex items-center gap-1.5">
-            <span>PARCHÍS</span>
-            <span class="font-bold opacity-90">ONLINE</span>
-          </h1>
-          <p class="text-[11px] font-bold tracking-wider text-white/70 uppercase">Edición Glassmorphism</p>
-        </div>
-      </div>
-
-      <!-- Nombre y Logo Genérico Superior Derecha -->
-      <div class="flex items-center gap-3 glass-panel px-4 py-2 rounded-full">
-        <span class="font-bold text-sm tracking-wide">CarlosRey</span>
-        <div class="w-8 h-8 rounded-full overflow-hidden border border-white/50 bg-white/20 p-1 flex items-center justify-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/3076/3076890.png" alt="Logo Perfil" class="w-full h-full object-contain filter invert">
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="relative z-10 flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
-    
-    <!-- 1. PANTALLA DE INICIO -->
-    <div class="w-full max-w-md my-auto transition-all duration-300" id="screen-home">
-      <div class="glass-panel rounded-3xl p-6 sm:p-9 relative overflow-hidden">
-        
-        <!-- Cabecera de bienvenida -->
-        <div class="text-center mb-8 pt-3">
-          <div class="inline-flex items-center justify-center w-20 h-20 rounded-3xl glass-panel text-white text-4xl mb-3 animate-bob">
-            <i class="fa-solid fa-dice drop-shadow-md"></i>
+<!doctype html>
+<html lang="es" data-type="software">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="page-type" content="software" />
+    <meta name="site-kind" content="gaming" />
+    <title>Parchís Online</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="theme-default">
+    <header>
+      <button class="brand" onclick="showScreen('screen-home')">
+        <span class="mark" aria-hidden="true"></span>Parchís Online
+      </button>
+    </header>
+    <main>
+      <section id="screen-home" class="panel home">
+        <div class="cover">
+          <p class="eyebrow">Juego de mesa multijugador</p>
+          <h1>Parchís</h1>
+          <div class="board" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-black font-game tracking-wide mt-1">¡A Jugar Parchís!</h2>
-          <p class="text-xs sm:text-sm text-white/80 mt-1 font-semibold">Elige tu nombre y crea una partida</p>
         </div>
-
-        <!-- Formulario -->
-        <div class="space-y-6">
-          <div>
-            <label class="block text-xs font-extrabold uppercase tracking-wider text-white/80 mb-2" for="player-name">Nombre del Jugador</label>
-            <div class="relative">
-              <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/60">
-                <i class="fa-solid fa-user-astronaut text-base"></i>
-              </span>
-              <input class="w-full pl-11 pr-4 py-3.5 rounded-2xl glass-input font-bold text-base" id="player-name" maxlength="12" placeholder="Ej. CarlosRey" type="text" value="CarlosRey"/>
+        <div class="setup">
+          <h2>Entrar a jugar</h2>
+          <label for="player-name">Tu nombre</label
+          ><input
+            id="player-name"
+            maxlength="12"
+            placeholder="Ej. CarlosRey"
+            type="text"
+            value="CarlosRey"
+          />
+          <button
+            class="primary"
+            id="btn-create-room"
+            onclick="createNewRoom()"
+          >
+            Crear sala <span aria-hidden="true">＋</span>
+          </button>
+          <div class="invite">
+            <label for="room-code-input">Código de invitación</label>
+            <div class="row">
+              <input
+                id="room-code-input"
+                placeholder="Ej. PAR-8942"
+                type="text"
+                aria-describedby="join-error-msg"
+              /><button onclick="joinRoomWithCode()">Entrar</button>
             </div>
-          </div>
-
-          <div>
-            <button class="w-full glass-btn rounded-2xl p-4 font-black text-base uppercase font-game tracking-wider flex items-center justify-center gap-3 group" id="btn-create-room" onclick="createNewRoom()">
-              <div class="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-plus text-sm"></i>
-              </div>
-              <span>Crear Nueva Sala</span>
-            </button>
-          </div>
-
-          <!-- Unirse con Código (Se eliminó el texto separador superior) -->
-          <div class="glass-panel-dark p-4 sm:p-5 rounded-2xl mt-4">
-            <label class="block text-[11px] font-extrabold uppercase tracking-wider text-white/80 mb-2" for="room-code-input">Código de Invitación</label>
-            <div class="flex flex-col sm:flex-row gap-2.5">
-              <div class="relative flex-1">
-                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-white/60">
-                  <i class="fa-solid fa-key"></i>
-                </span>
-                <input class="w-full pl-10 pr-3 py-3 rounded-xl glass-input font-mono font-black uppercase tracking-wider text-sm" id="room-code-input" placeholder="EJ. PAR-8942" type="text"/>
-              </div>
-              <button class="px-5 py-3 rounded-xl glass-btn font-black font-game text-sm uppercase tracking-wider flex items-center justify-center gap-2" onclick="joinRoomWithCode()">
-                <span>Entrar</span>
-                <i class="fa-solid fa-arrow-right text-xs"></i>
-              </button>
-            </div>
-            <p class="text-xs text-rose-300 mt-2.5 hidden flex items-center gap-1.5 font-bold" id="join-error-msg">
-              <i class="fa-solid fa-circle-exclamation"></i>
-              <span>Ingresa un código válido.</span>
+            <p class="hidden error" id="join-error-msg" role="alert">
+              Introduce un código de sala.
             </p>
           </div>
-        </div>
-
-        <!-- Botones Selectores de 6 Colores -->
-        <div class="mt-6 pt-5 border-t border-white/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-white/80">
-          <span class="font-bold">Color preferido:</span>
-          <div class="flex items-center gap-2">
-            <button class="w-8 h-8 rounded-full glass-btn p-1 flex items-center justify-center focus:border-white focus:ring-2 focus:ring-white/50 hover:scale-110" title="Rojo" onclick="changeTheme('red')">
-              <span class="w-4 h-4 rounded-full bg-rose-500 shadow-md"></span>
-            </button>
-            <button class="w-8 h-8 rounded-full glass-btn p-1 flex items-center justify-center focus:border-white focus:ring-2 focus:ring-white/50 hover:scale-110" title="Azul" onclick="changeTheme('blue')">
-              <span class="w-4 h-4 rounded-full bg-blue-500 shadow-md"></span>
-            </button>
-            <button class="w-8 h-8 rounded-full glass-btn p-1 flex items-center justify-center focus:border-white focus:ring-2 focus:ring-white/50 hover:scale-110" title="Amarillo" onclick="changeTheme('yellow')">
-              <span class="w-4 h-4 rounded-full bg-amber-500 shadow-md"></span>
-            </button>
-            <button class="w-8 h-8 rounded-full glass-btn p-1 flex items-center justify-center focus:border-white focus:ring-2 focus:ring-white/50 hover:scale-110" title="Verde" onclick="changeTheme('green')">
-              <span class="w-4 h-4 rounded-full bg-emerald-500 shadow-md"></span>
-            </button>
-            <button class="w-8 h-8 rounded-full glass-btn p-1 flex items-center justify-center focus:border-white focus:ring-2 focus:ring-white/50 hover:scale-110" title="Violeta" onclick="changeTheme('violet')">
-              <span class="w-4 h-4 rounded-full bg-purple-500 shadow-md"></span>
-            </button>
-            <button class="w-8 h-8 rounded-full glass-btn p-1 flex items-center justify-center focus:border-white focus:ring-2 focus:ring-white/50 hover:scale-110" title="Naranja" onclick="changeTheme('orange')">
-              <span class="w-4 h-4 rounded-full bg-orange-500 shadow-md"></span>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 2. SALA DE ESPERA -->
-    <div class="hidden w-full max-w-5xl my-auto transition-all duration-300" id="screen-lobby">
-      <div class="glass-panel rounded-3xl overflow-hidden flex flex-col">
-        
-        <!-- Top Sala -->
-        <div class="glass-panel border-x-0 border-t-0 border-b border-white/20 px-6 py-5 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-4">
-            <button class="w-11 h-11 rounded-2xl glass-btn flex items-center justify-center transition-all group" onclick="showScreen('screen-home')" title="Volver al Inicio">
-              <i class="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-0.5"></i>
-            </button>
-            <div>
-              <div class="flex items-center gap-2.5">
-                <h2 class="text-xl font-black font-game tracking-wide">Sala de Espera</h2>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold bg-emerald-500/30 border border-emerald-400/50">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>En línea
-                </span>
-              </div>
-              <p class="text-xs text-white/70 mt-0.5 font-semibold">Esperando participantes (2 a 4 jugadores)</p>
+          <fieldset>
+            <legend>Color preferido</legend>
+            <div class="colors">
+              <button title="Rojo" onclick="changeTheme('red')"></button
+              ><button title="Azul" onclick="changeTheme('blue')"></button
+              ><button title="Amarillo" onclick="changeTheme('yellow')"></button
+              ><button title="Verde" onclick="changeTheme('green')"></button
+              ><button title="Violeta" onclick="changeTheme('violet')"></button
+              ><button title="Naranja" onclick="changeTheme('orange')"></button>
             </div>
+          </fieldset>
+        </div>
+      </section>
+      <section class="hidden panel lobby" id="screen-lobby">
+        <div class="lobby-head">
+          <div>
+            <button class="back" onclick="showScreen('screen-home')">
+              ← Volver al inicio
+            </button>
+            <h2>Sala de espera</h2>
+            <p>De 2 a 4 jugadores</p>
           </div>
-          
-          <!-- Código -->
-          <div class="flex items-center gap-3 glass-panel-dark p-2.5 pl-4 rounded-2xl">
-            <div>
-              <span class="block text-[10px] font-extrabold text-white/60 uppercase tracking-wider">Código de Sala</span>
-              <span class="text-xl font-black font-mono tracking-widest text-white" id="display-room-code">PAR-7821</span>
-            </div>
-            <button class="px-4 py-2.5 rounded-xl glass-btn font-black text-xs font-game uppercase tracking-wider flex items-center gap-1.5" onclick="copyRoomCode()" title="Copiar">
-              <i class="fa-regular fa-copy"></i>
+          <div class="code">
+            <span class="eyebrow">Código de sala</span
+            ><strong id="display-room-code">PAR-7821</strong
+            ><button onclick="copyRoomCode()">
               <span id="copy-btn-text">Copiar</span>
             </button>
           </div>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
-          <!-- Lista de Jugadores -->
-          <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/20">
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-7 h-7 rounded-xl glass-panel flex items-center justify-center text-amber-400 text-xs">
-                    <i class="fa-solid fa-users"></i>
-                  </div>
-                  <h3 class="text-sm font-black uppercase tracking-wider">Jugadores</h3>
-                </div>
-                <span class="text-xs font-extrabold glass-panel-dark px-3 py-1 rounded-full">
-                  <span id="connected-count">0</span> / 4 Conectados
-                </span>
-              </div>
-              
-              <ul class="space-y-3.5" id="players-list"></ul>
-              
-              <div class="p-6 rounded-3xl glass-panel-dark text-center my-2" id="players-empty-state">
-                <div class="w-12 h-12 rounded-2xl glass-panel mx-auto flex items-center justify-center mb-2">
-                  <i class="fa-solid fa-hourglass-half text-lg animate-pulse text-amber-400"></i>
-                </div>
-                <p class="text-sm font-extrabold">Esperando jugadores...</p>
-                <button class="mt-4 px-4 py-2 rounded-xl glass-btn text-xs font-extrabold inline-flex items-center gap-2" onclick="simulateJoinPlayer()">
-                  <i class="fa-solid fa-user-plus"></i> Simular jugador
-                </button>
-              </div>
+        <div class="columns">
+          <section class="players">
+            <h3>
+              Jugadores <small><span id="connected-count">0</span> / 4</small>
+            </h3>
+            <ul id="players-list"></ul>
+            <p id="players-empty-state">Esperando jugadores…</p>
+            <button onclick="simulateJoinPlayer()">Simular jugador</button
+            ><button class="primary" disabled id="btn-start-game">
+              Iniciar juego
+            </button>
+          </section>
+          <section class="chat">
+            <h3>Chat de la sala</h3>
+            <div id="chat-messages" role="log">
+              <p>Comparte el código para invitar a la mesa.</p>
             </div>
-            
-            <div class="pt-6 mt-6 border-t border-white/20 flex items-center justify-between gap-4">
-              <button class="px-7 py-3.5 rounded-2xl glass-btn font-black font-game text-base uppercase tracking-wider opacity-50 cursor-not-allowed flex items-center gap-2" disabled id="btn-start-game">
-                <i class="fa-solid fa-play text-sm"></i>
-                <span>Iniciar Juego</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Chat -->
-          <div class="lg:col-span-5 flex flex-col justify-between glass-panel-dark border-0 rounded-none rounded-br-3xl">
-            <div class="px-5 py-4 border-b border-white/20 flex items-center justify-between">
-              <div class="flex items-center gap-2.5">
-                <i class="fa-solid fa-comments text-xs"></i>
-                <h4 class="text-sm font-black font-game uppercase tracking-wider">Chat de la Sala</h4>
-              </div>
-            </div>
-            
-            <div class="flex-1 p-4 space-y-3.5 overflow-y-auto max-h-[340px] custom-scrollbar text-xs" id="chat-messages">
-              <div class="p-2.5 rounded-2xl bg-white/10 text-center text-[11px] font-bold">
-                <i class="fa-solid fa-bell text-amber-400 mr-1"></i> Sala creada. ¡Comparte el código!
-              </div>
-            </div>
-            
-            <div class="p-4 border-t border-white/20">
-              <form class="flex items-center gap-2.5" id="chat-form" onsubmit="sendChatMessage(event)">
-                <input autocomplete="off" class="flex-1 px-4 py-3 rounded-xl glass-input text-xs font-bold" id="chat-input" placeholder="Escribe un mensaje..." type="text"/>
-                <button class="w-10 h-10 rounded-xl glass-btn flex items-center justify-center" type="submit">
-                  <i class="fa-solid fa-paper-plane text-xs"></i>
-                </button>
-              </form>
-            </div>
-          </div>
+            <form class="row" id="chat-form" onsubmit="sendChatMessage(event)">
+              <input
+                autocomplete="off"
+                id="chat-input"
+                aria-label="Mensaje"
+                placeholder="Escribe un mensaje…"
+                type="text"
+              /><button type="submit">Enviar</button>
+            </form>
+          </section>
         </div>
-      </div>
-    </div>
-  </main>
-
-  <footer class="relative z-10 w-full px-6 py-3.5 border-t border-white/20 glass-panel border-x-0 border-b-0 text-center text-xs text-white/80">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-      <p class="font-bold">© 2025 Parchís Online • Ismael y Óscar.</p>
-    </div>
-  </footer>
-
-  <!-- Script Funcional -->
-  <script src="src/main.js"></script>
-</body>
+      </section>
+    </main>
+    <footer>© 2025 Parchís Online · Ismael y Óscar</footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
